@@ -31,7 +31,7 @@ public class ForecastFragment extends Fragment{
     public ForecastFragment() {
     }
 
-    public ForecastFragment newInstance(ForecastMain model) {
+    public static ForecastFragment newInstance(ForecastMain model) {
         ForecastFragment fragment = new ForecastFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("model", model);

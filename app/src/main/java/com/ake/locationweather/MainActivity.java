@@ -1,10 +1,13 @@
 package com.ake.locationweather;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .build();
         mApi = mRetrofit.create(MapApi.class);
 
+
         mGeocoder = new Geocoder(this);
 
     }
@@ -85,6 +89,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        }
+
         mMap.setOnMapLongClickListener(this);
         if (mLat == 0.0) {
             LatLng startingPoint = new LatLng(37.56, 126.97);
@@ -92,8 +102,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         } else {
             Quarterly();
         }
-
     }
+
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        if (requestCode == 100) {
+//            if (permissions.length == 1 &&
+//                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
+//                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                        != PackageManager.PERMISSION_GRANTED
+//                        && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//                    return;
+//                }
+//                mMap.setMyLocationEnabled(true);
+//            }
+//        }
+//    }
+
 
     @Override
     public void onMapLongClick(final LatLng latLng) {
