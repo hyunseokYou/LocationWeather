@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1012346037394",
+    "firebase_url": "https://locationweather-8bc2d.firebaseio.com",
+    "project_id": "locationweather-8bc2d",
+    "storage_bucket": "locationweather-8bc2d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1012346037394:android:aa0f8dcaf2c95f72",
+        "android_client_info": {
+          "package_name": "com.ake.locationweather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1012346037394-83aab5o40gkp02jtl1r00poofh0bha55.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCl4eajSbPmR9xkpHAqk6AFjzEEe3e65LU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

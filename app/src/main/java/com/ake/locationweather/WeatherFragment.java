@@ -20,27 +20,30 @@ import com.ake.locationweather.Weather.WeatherMain;
  */
 
 public class WeatherFragment extends Fragment {
+
+    private TextView mAdress;
+
     private ImageView mImageMain;
-
     private TextView mSunRise;
+
     private TextView mSunrSet;
-
     private TextView mWindSpeed;
+
     private ImageView mWindDirection;
-
     private TextView mWeather;
-    private TextView mTemperature;
 
+    private TextView mTemperature;
     private TextView mAtmosphere;
     private TextView mHumidity;
-    private TextView mVisualrange;
 
+    private TextView mVisualrange;
     private WeatherMain mModel;
 
-    public static WeatherFragment newInstance(WeatherMain model) {
+    public static WeatherFragment newInstance(WeatherMain model, String adress) {
         WeatherFragment fragment = new WeatherFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable("model", model);
+        bundle.putSerializable("adress", adress);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -76,6 +79,7 @@ public class WeatherFragment extends Fragment {
                 mImageMain.setImageResource(R.drawable.mist);
                 break;
         }
+        mAdress = (TextView) view.findViewById(R.id.adress_main);
 
         mSunRise = (TextView) view.findViewById(R.id.weather_sunrise);
         mSunrSet = (TextView) view.findViewById(R.id.weather_sunset);
@@ -89,6 +93,8 @@ public class WeatherFragment extends Fragment {
         mAtmosphere = (TextView) view.findViewById(R.id.weather_atmosphere);
         mHumidity = (TextView) view.findViewById(R.id.weather_humidity);
         mVisualrange = (TextView) view.findViewById(R.id.weather_visualrange);
+
+        mAdress.setText(bundle.getString("adress"));
 
         mSunRise.setText(mModel.getSys().getSunrise() + "");
         mSunrSet.setText(mModel.getSys().getSunset() + "");

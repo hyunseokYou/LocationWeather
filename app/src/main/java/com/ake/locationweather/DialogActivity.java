@@ -30,7 +30,7 @@ public class DialogActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog);
 
-        mFragmentWeather = WeatherFragment.newInstance((WeatherMain) getIntent().getSerializableExtra("weather"));
+        mFragmentWeather = WeatherFragment.newInstance((WeatherMain) getIntent().getSerializableExtra("weather"), getIntent().getStringExtra("adress"));
         mFragmentForeCast = ForecastFragment.newInstance((ForecastMain) getIntent().getSerializableExtra("forecast"));
 
         mTabLayout = (TabLayout) findViewById(R.id.dialog_tab);

@@ -14,9 +14,9 @@ public class Sys implements Serializable {
 
     private String id;
 
-    private double sunset;
+    private long sunset;
 
-    private double sunrise;
+    private long sunrise;
 
     private String type;
 
@@ -42,7 +42,7 @@ public class Sys implements Serializable {
         return UTC(sunset);
     }
 
-    public void setSunset(double sunset) {
+    public void setSunset(long sunset) {
         this.sunset = sunset;
     }
 
@@ -50,7 +50,7 @@ public class Sys implements Serializable {
         return UTC(sunrise);
     }
 
-    public void setSunrise(double sunrise) {
+    public void setSunrise(long sunrise) {
         this.sunrise = sunrise;
     }
 
@@ -75,8 +75,8 @@ public class Sys implements Serializable {
         return "ClassPojo [message = " + message + ", id = " + id + ", sunset = " + sunset + ", sunrise = " + sunrise + ", type = " + type + ", country = " + country + "]";
     }
 
-    public String UTC(double sun) {
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hh:mm", Locale.KOREA);
+    public String UTC(long sun) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("kk:mm", Locale.KOREAN);
         simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
         return simpleDateFormat.format(sun * 1000L);
     }
